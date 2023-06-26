@@ -1,0 +1,46 @@
+{
+  "name": "electron-auto-update",
+  "version": "1.0.0",
+  "description": "Electron Auto Update Test",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "start": "electron .",
+    "rebuild": "electron-rebuild -f -w sqlite3",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.koreex.electron.spike",
+    "win": {
+      "target": "NSIS",
+      "icon": "./build/icon.ico"
+    },
+    "extraResources": [
+      "./db/**"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koreex/electron-auto-update.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koreex/electron-auto-update/issues"
+  },
+  "homepage": "https://github.com/koreex/electron-auto-update#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.2",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "electron": "^24.0.0",
+    "electron-builder": "^24.1.2",
+    "electron-rebuild": "^3.2.3",
+    "electron-reload": "^2.0.0-alpha.1",
+    "electron-reloader": "^1.2.3"
+  }
+}
