@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
-  <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, width=device-width" />
-	<title>Home page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+    <meta
+      name="viewport"
+      content="user-scalable=yes, initial-scale=1.0, width=device-width"
+    />
+    <title>Home page</title>
   </head>
   <body>
-	  <div id="check-update">Check Update</div>
+    <div id="version"></div>
+    <div id="check-update">Check Update</div>
+    <script>
+      const { ipcRenderer } = require("electron");
+      // const { autoUpdater } = require("electron-updater");
+
+      const version = document.getElementById("version");
+
+      ipcRenderer.send("app_version");
+      ipcRenderer.on("app_version", (event, arg) => {
+        ipcRenderer.removeAllListeners("app_version");
+        version.innerText = "Version " + arg.version;
+      });
+
+      const checkUpdate = document.getElementById("check-update");
+      checkUpdate.addEventListener("click", () => {
+        ipcRenderer.send("check_update");
+      });
+    </script>
   </body>
 </html>

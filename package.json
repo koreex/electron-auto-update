@@ -9,10 +9,11 @@
     "rebuild": "electron-rebuild -f -w sqlite3",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "deploy": "electron-builder --win --publish always"
   },
   "build": {
-    "appId": "com.koreex.electron.spike",
+    "appId": "com.koreex.electron.autoupdate",
     "win": {
       "target": "NSIS",
       "icon": "./build/icon.ico"
@@ -34,6 +35,7 @@
   "homepage": "https://github.com/koreex/electron-auto-update#readme",
   "dependencies": {
     "bootstrap": "^5.1.2",
+    "electron-updater": "^6.1.1",
     "jquery": "^3.6.0"
   },
   "devDependencies": {
